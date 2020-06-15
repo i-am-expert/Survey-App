@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const UserRouter = require('./routes/user');
+const OptionsRouter = require('./routes/options');
 
 require('dotenv').config();
 
@@ -19,6 +20,7 @@ mongoose.connection.once('open', () => {
 });
 
 app.use('/users', UserRouter);
+app.use('/options', OptionsRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

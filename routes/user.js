@@ -1,7 +1,6 @@
 const router = require('express').Router();
 let User = require('../models/User');
 const nodemailer = require('nodemailer');
-const { nextTick } = require('process');
 
 require('dotenv').config();
 

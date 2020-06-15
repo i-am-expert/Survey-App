@@ -41,8 +41,9 @@ export class Code extends Component {
             this.setState({
                 userObj: res.data
             })
-            if(code == this.state.userObj[0].code) {
+            if(code === this.state.userObj[0].code) {
                 console.log('Code Matched!')
+                window.location = '/users/survey/' + email;
             } else {
                 console.log('Code not matched!');
                 document.getElementById("message").innerHTML = "Incorrect Code! Please Try Again!";
@@ -57,7 +58,7 @@ export class Code extends Component {
     
     render() {
         return (
-            <div className="container" style={{width: "50%", margin: "auto", marginTop: "10%"}}>
+            <div className="container" style={{width: "40%", margin: "auto", marginTop: "10%"}}>
                 <form onSubmit={this.onSubmit} autoCorrect="off" autoComplete="off">
                     <div id="message-div" className="alert alert-primary" style={{textAlign: "center", alignContent: "center"}}>
                         <p id="message">Verification Code has been sent to your email!</p>
