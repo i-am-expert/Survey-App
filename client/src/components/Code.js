@@ -44,7 +44,11 @@ export class Code extends Component {
             if(code == this.state.userObj[0].code) {
                 console.log('Code Matched!')
             } else {
-                console.log('Code not matched!')
+                console.log('Code not matched!');
+                document.getElementById("message").innerHTML = "Incorrect Code! Please Try Again!";
+                document.getElementById("message-div").classList.add("alert-danger");
+                document.getElementById("message-div").classList.remove("alert-primary");
+                document.getElementById("code").value = "";
             }
             console.log(this.state.userObj[0].code);
         })
@@ -55,8 +59,8 @@ export class Code extends Component {
         return (
             <div className="container" style={{width: "50%", margin: "auto", marginTop: "10%"}}>
                 <form onSubmit={this.onSubmit} autoCorrect="off" autoComplete="off">
-                    <div className="alert alert-primary" style={{textAlign: "center", alignContent: "center"}}>
-                        <p>Verification Code has been sent to your email!</p>
+                    <div id="message-div" className="alert alert-primary" style={{textAlign: "center", alignContent: "center"}}>
+                        <p id="message">Verification Code has been sent to your email!</p>
                     </div>
                     <br />
                     <div className="form-group">
