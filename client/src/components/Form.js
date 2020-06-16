@@ -65,6 +65,7 @@ export class Form extends Component {
                             type="email" 
                             className="form-control" 
                             id="email" 
+                            spellCheck="false"
                             value={this.state.email}
                             onChange={this.onChangeEmail} 
                         />

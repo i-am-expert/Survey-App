@@ -70,6 +70,7 @@ export class Code extends Component {
                             type="text" 
                             className="form-control" 
                             id="code" 
+                            spellCheck="false"
                             value={this.state.code}
                             onChange={this.onChangeCode} 
                         />
