@@ -98,6 +98,10 @@ export class Result extends Component {
         .catch(err => console.log(err));
     }
     
+    onSubmit = () => {
+        window.location = '/';
+    }
+
     render() {
         return (
             <div className="container" style={{width: "40%", margin: "auto", marginTop: "7%", marginBottom: "5%"}}>
@@ -127,6 +131,10 @@ export class Result extends Component {
                     height={300}
                     width={300}
                 />
+                <br />
+                <div style={{textAlign: "center"}}>
+                    <button type="submit" onClick={this.onSubmit} className="btn btn-primary">Submit Another Response</button>
+                </div>
             </div>
         )
     }

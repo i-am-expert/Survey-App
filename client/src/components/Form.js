@@ -22,16 +22,42 @@ export class Form extends Component {
         const email_ = {
             email: email
         }
-        axios.post(`http://localhost:5000/users/${email}`, email_)
-        .then(res => console.log(res.data))
+
+        axios.get(`http://localhost:5000/users/`+email)
+        .then(res => {
+            console.log(res.data);
+            if(res.data.length) {
+                console.log("Exists");
+                document.getElementById("message-div").style.display = "block";
+                document.getElementById("email").value = "";
+            } else {
+                console.log("Absent");
+                axios.post(`http://localhost:5000/users/${email}`, email_)
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err));
+
+                window.location = '/users/' + email;
+            }
+        })
         .catch(err => console.log(err));
 
-        window.location = '/users/' + email;
+        // axios.post(`http://localhost:5000/users/${email}`, email_)
+        // .then(res => console.log(res.data))
+        // .catch(err => console.log(err));
+
+        // window.location = '/users/' + email;
     }
 
     render() {
         return (
-            <div className="container" style={{width: "40%", margin: "auto", marginTop: "10%"}}>
+            <div className="container" style={{width: "40%", margin: "auto", marginTop: "7%"}}>
+                <div style={{textAlign: "center"}}>
+                    <h1>SURVEY - PROGRAMMING</h1>
+                </div>
+                <br />
+                <div id="message-div" className="alert alert-danger" style={{textAlign: "center", alignContent: "center", display: "none"}}>
+                        <p id="message">You have already submitted your response!</p>
+                </div>
                 <form onSubmit={this.onSubmit} autoCorrect="off" autoComplete="off">
                     <div className="form-group">
                         <label htmlFor="email">Email address</label>

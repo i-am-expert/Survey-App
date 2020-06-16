@@ -4,10 +4,6 @@ import axios from 'axios';
 export class Question extends Component {
     constructor(props) {
         super(props)
-    
-        this.state = {
-             
-        }
     }
 
     handleClick = (e) => {
