@@ -19,8 +19,13 @@ export class Question extends Component {
             choice: selected
         }
         axios.post(`http://localhost:5000/options/add/${email}`, option)
-        .then(res => console.log(res.data))
+        .then(res => {
+            console.log(res.data);
+            window.location = `/result/${email}/${selected}`;
+        })
         .catch(err => console.log(err));
+
+        // window.location = `/result/${email}/${selected}`;
     }
     
     render() {
